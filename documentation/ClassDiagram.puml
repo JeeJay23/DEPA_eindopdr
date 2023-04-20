@@ -1,4 +1,54 @@
-@startuml
+@startuml classDiagram
+
+title Circuit Simulation class diagram
+right footer "20-04-23 v1.0"
+
+hide empty members
+
+abstract class node as "Node" {
+    - inputs : vector<bool>
+    - outputs : vector<bool>
+    - name : string
+    + propagationDelay : int
+    + run() : int 
+    + setValue(value : bool)
+}
+
+class circuit as "Circuit" {
+    + newandGate() : andGate
+}
+
+
+class fileReader as "FileReader" {
+    + {static} readFile(fileName : string) : Circuit*
+}
+
+' class parser as "Parser" {
+'     + {static} parseDescription()
+' }
+
+class andGate as "AndGate" {
+}
+class orGate as "OrGate" {
+}
+class notGate as "NotGate" {
+}
+class nandGate as "NandGate" {
+}
+class norGate as "norGate" {
+}
+class xorGate as "xorGate" {
+}
+
+
+node *-- circuit
+node "1" o-- "*" node : - nextNodes
+andGate --|> node
+orGate --|> node
+notGate --|> node
+nandGate --|> node
+norGate --|> node
+xorGate --|> node
 
 
 @enduml
