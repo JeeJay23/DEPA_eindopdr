@@ -15,18 +15,20 @@ abstract class node as "Node" {
 }
 
 class circuit as "Circuit" {
-    + newandGate() : andGate
+
+    'store nodes by name as identifier'
+    - nodes : map<char*, node*>
+
+    + run() : result
+    + addNode(node : node*)
+    + {static} createCircuit(fileName : string) : Circuit*
 }
 
-
-class fileReader as "FileReader" {
-    + {static} readFile(fileName : string) : Circuit*
+class input as "Input" {
 }
-
-' class parser as "Parser" {
-'     + {static} parseDescription()
-' }
-
+class probe as "Probe" {
+    + printResult(result : int)
+}
 class andGate as "AndGate" {
 }
 class orGate as "OrGate" {
@@ -40,6 +42,14 @@ class norGate as "norGate" {
 class xorGate as "xorGate" {
 }
 
+class nodeFactory as "NodeFactory" {
+    + {static} instance : NodeFactory*
+    + {static} createNode(nodeType : string, name : string) : node*
+}
+
+class fileReader as "FileReader" {
+    + {static} readFile(fileName : string) : Circuit*
+}
 
 node *-- circuit
 node "1" o-- "*" node : - nextNodes
@@ -49,6 +59,9 @@ notGate --|> node
 nandGate --|> node
 norGate --|> node
 xorGate --|> node
+input --|> node
+probe --|> node
+
 
 
 @enduml
