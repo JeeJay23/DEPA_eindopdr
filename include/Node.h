@@ -1,18 +1,16 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 class Node
 {
-private:
-    vector<bool> inputs;
-    vector<bool> outputs;
-    string name;
-    vector<Node*> nextNodes;
+protected:
+    std::string name;
+    std::vector<int> inputs;
+    int output;
+    std::vector<Node*> nextNodes;
 
 public:
-    Node(string name) : name(name),{};
+    Node(std::string _name) : name(_name) {};
     virtual int run() = 0;
 
     void setValue(bool input)
