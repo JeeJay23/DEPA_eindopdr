@@ -1,23 +1,23 @@
-#include <stdio.h>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-class ANode
+class Node
 {
 private:
     vector<bool> inputs;
     vector<bool> outputs;
     string name;
-    vector<ANode *> nextNodes;
+    vector<Node*> nextNodes;
 
 public:
+    Node(string name) : name(name),{};
     virtual int run() = 0;
 
     void setValue(bool input)
     {
-        inputs.emplace(inputs.end(), input);
+        inputs.push_back(input);
     };
 
 public:
