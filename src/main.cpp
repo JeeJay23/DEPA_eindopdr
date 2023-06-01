@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "LogicGate.h"
+#include "Node.h"
 
 int main(int argc, char const *argv[])
 {
-    LogicGate *gate = new LogicGate("AND");
+    Node *gate = new Node("AND");
 
     std::printf("gate pointer: %p\n", gate);
 
