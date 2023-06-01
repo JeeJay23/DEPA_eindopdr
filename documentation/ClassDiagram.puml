@@ -12,6 +12,8 @@ abstract class node as "Node" {
     - inputs : vector<bool>
     - outputs : vector<bool>
     - name : string
+    - nextNodeName : string
+
     + propagationDelay : int
     + run() : int 
     + setValue(value : bool)
@@ -23,10 +25,14 @@ class logicFunction as "LogicFunction" {
 
 class circuit as "Circuit" {
     'store nodes by name as identifier'
-    - nodes : map<char*, node*>
+    - nodes : map<int, node*>
+    - nodeNameToId : map<string, int>;
+    - sortedIds : vector<int>
 
     + run() : result
     + addNode(node : node*)
+    + sortNodes()
+    + getNodeIdByName(name : string) : int
     + {static} createCircuit(fileName : string) : Circuit*
 }
 
@@ -46,7 +52,6 @@ class fileReader as "FileReader" {
 }
 
 node *-- circuit
-node "1" o-- "*" node : - nextNodes
 
 input --|> node
 probe --|> node
