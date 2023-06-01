@@ -1,4 +1,4 @@
-#include "include/AndFunction.h"
+#include "AndFunction.h"
 
 int AndFunction::execute(std::vector<int> inputs)
 {

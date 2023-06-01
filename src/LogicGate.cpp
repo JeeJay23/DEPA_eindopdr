@@ -1,4 +1,4 @@
-#include "include/LogicGate.h"
+#include "LogicGate.h"
 
 int LogicGate::run()
 {

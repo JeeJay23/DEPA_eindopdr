@@ -1,4 +1,4 @@
-#include "include/NandFunction.h"
+#include "NandFunction.h"
 
 int NandFunction::execute(std::vector<int> inputs)
 {

@@ -1,4 +1,4 @@
-#include "include/OrFunction.h"
+#include "OrFunction.h"
 
 int OrFunction::execute(std::vector<int> inputs)
 {

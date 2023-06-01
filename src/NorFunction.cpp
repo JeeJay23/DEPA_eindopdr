@@ -1,4 +1,4 @@
-#include "include/NorFunction.h"
+#include "NorFunction.h"
 
 int NorFunction::execute(std::vector<int> inputs)
 {

@@ -7,7 +7,7 @@ private:
     LogicFunction* logicFunction;
 
 public:
-    LogicGate(string name) : Node(name){};
+    LogicGate(std::string name) : Node(name){};
     ~LogicGate() = default;
 
     int run();
