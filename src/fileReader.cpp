@@ -1,30 +1,30 @@
-#include <io.h>
-#include <fstream>
+#include <iostream>
+#include <string>
+#include "fileReader.h"
 
-class FileReader
+FileReader::FileReader(std::string path)
 {
-public:
-    FileReader();
-    ~FileReader();
-    void read(std::string);
-    void close();
-
-private:
-    std::string path;
-    std::ifstream file;
-};
-
-FileReader::FileReader()
-{
+    file.open(path);
 }
 
 FileReader::~FileReader()
 {
+    file.close();
 }
 
-void FileReader::read(std::string path)
+std::string FileReader::read()
 {
-    file.open(path);
+    std::string line;
+
+    while (std::getline(file, line))
+    {
+
+        ;
+    }
+}
+
+std::string FileReader::nextLine()
+{
 }
 
 void FileReader::close()
