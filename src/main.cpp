@@ -6,6 +6,7 @@
 #include "NodeFactory.h"
 
 #include "NodeFunctions.h"
+#include "Circuit.h"
 
 int main(int argc, char const *argv[])
 {
@@ -27,6 +28,8 @@ int main(int argc, char const *argv[])
         std::printf("Node %s\n", node->getName().c_str());
         node->run();
     }
+
+    Circuit circuit = Circuit::createCircuit("circuit1.txt");
 
     return 0;
 }
