@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "C/C++: g++.exe build and debug project",
+            "name": "GDB debug",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}\\build\\myprogram.exe",
