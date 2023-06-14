@@ -1,4 +1,3 @@
-#pragma once
 #include "XorFunction.h"
 
 int XorFunction::execute(std::vector<int> inputs)

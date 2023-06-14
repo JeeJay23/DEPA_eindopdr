@@ -1,4 +1,3 @@
-#pragma once
 #include "NandFunction.h"
 
 int NandFunction::execute(std::vector<int> inputs)

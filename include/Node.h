@@ -18,7 +18,6 @@ public:
     Node(std::string _name, std::shared_ptr<LogicFunction> _function) : name(_name), function(_function){};
 
     std::string getName() { return name; };
-    std::vector<std::shared_ptr<Node>> getNextNodes() { return nextNodes; };
 
     int run();
 

@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
     for (auto node : nodes)
     {
         std::printf("Node %s\n", node->getName().c_str());
-        node->run();
+        node->run(); // TODO fix null dereference
     }
 
     Circuit circuit = Circuit::createCircuit("circuit1.txt");

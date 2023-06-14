@@ -1,8 +1,7 @@
-#pragma once
-
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <algorithm>
 #include "Circuit.h"
 #include "fileReader.h"
 
@@ -42,13 +41,17 @@ void Circuit::sortNodes()
         {
             for (int j = 0; j < nodes.size(); j++) // Node to be checked against
             {
-                std::list<std::string> nextNodeNames;
+                std::vector<std::string> nextNodeNames;
                 for (auto node : nodes[j]->getNextNodes())
                 {
                     nextNodeNames.push_back(node->getName());
                 }
 
-                if (std::find(nextNodeNames.begin(), nextNodeNames.end(), nodes[i]->getName()) != nextNodeNames.end())
+                std::vector<std::string>::iterator it;
+
+                it = std::find(nextNodeNames.begin(), nextNodeNames.end(), "test");
+
+                if (it != nextNodeNames.end())
                 {
                     std::cout << "Node found in nextNodes of another node | Skipping for now" << std::endl;
                     break;

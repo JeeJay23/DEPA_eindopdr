@@ -1,4 +1,3 @@
-#pragma once
 #include "NodeFactory.h"
 
 std::shared_ptr<NodeFactory> NodeFactory::instance = nullptr;

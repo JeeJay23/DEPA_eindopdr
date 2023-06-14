@@ -1,4 +1,3 @@
-#pragma once
 #include "AndFunction.h"
 
 int AndFunction::execute(std::vector<int> inputs)
