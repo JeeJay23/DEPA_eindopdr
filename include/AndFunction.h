@@ -4,6 +4,10 @@
 
 class AndFunction : public LogicFunction
 {
-    int execute(std::vector<int> inputs) override;
-    std::shared_ptr<LogicFunction> clone() override;
+    AndFunction(std::string id);
+
+    int                             execute(std::vector<int> inputs)    override;
+    std::shared_ptr<LogicFunction>  clone()                             override;
+
+    static AndFunction instance;
 };

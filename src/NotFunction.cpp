@@ -1,5 +1,10 @@
-#pragma once
 #include "NotFunction.h"
+
+NotFunction NotFunction::instance("NOT");
+
+NotFunction::NotFunction(std::string id) : LogicFunction(id)
+{
+}
 
 int NotFunction::execute(std::vector<int> inputs)
 {

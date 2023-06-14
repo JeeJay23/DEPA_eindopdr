@@ -1,5 +1,10 @@
-#pragma once
 #include "OrFunction.h"
+
+OrFunction OrFunction::instance("OR");
+
+OrFunction::OrFunction(std::string id) : LogicFunction(id)
+{
+}
 
 int OrFunction::execute(std::vector<int> inputs)
 {

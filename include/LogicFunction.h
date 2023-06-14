@@ -3,12 +3,17 @@
 #include <vector>
 #include <memory>
 
+
 class LogicFunction
 {
-public:
-    LogicFunction() = default;
-    ~LogicFunction() = default;
+protected:
+    LogicFunction();
+    LogicFunction(std::string id);
 
-    virtual int execute(std::vector<int> inputs) = 0;
-    virtual std::shared_ptr<LogicFunction> clone() = 0;
+public:
+    virtual ~LogicFunction();
+
+public:
+    virtual int                             execute(std::vector<int> inputs);
+    virtual std::shared_ptr<LogicFunction>  clone() = 0;
 };
