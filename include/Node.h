@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <vector>
 #include <string>
@@ -15,7 +15,7 @@ protected:
     std::shared_ptr<LogicFunction> function;
 
 public:
-    Node(std::string _name, std::shared_ptr<LogicFunction> _function) : name(_name), function(_function) {};
+    Node(std::string _name, std::shared_ptr<LogicFunction> _function) : name(_name), function(_function){};
 
     std::string getName() { return name; };
     std::vector<std::shared_ptr<Node>> getNextNodes() { return nextNodes; };
@@ -25,6 +25,11 @@ public:
     void setValue(bool input)
     {
         inputs.push_back(input);
+    };
+
+    std::vector<std::shared_ptr<Node>> getNextNodes()
+    {
+        return nextNodes;
     };
 
 public:

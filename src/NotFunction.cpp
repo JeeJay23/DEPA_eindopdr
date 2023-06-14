@@ -1,3 +1,4 @@
+#pragma once
 #include "NotFunction.h"
 
 int NotFunction::execute(std::vector<int> inputs)
