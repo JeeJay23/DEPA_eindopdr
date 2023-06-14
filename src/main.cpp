@@ -5,7 +5,7 @@ int main(int argc, char const *argv[])
 {
     Node *gate = new Node("AND");
 
-    std::printf("gate pointer: %p\n", gate);
+    std::printf("gate pointer: %#p\n", gate);
 
     return 0;
 }
