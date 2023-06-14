@@ -19,12 +19,14 @@ int main(int argc, char const *argv[])
 
     std::vector<std::string> nodeNames = {"AND", "OR", "NOT", "NAND", "NOR", "XOR"};
     std::vector<std::shared_ptr<Node>> nodes;
-    for (auto str : nodeNames){
+    for (auto str : nodeNames)
+    {
         std::shared_ptr<Node> node = NodeFactory::create(str, str);
         nodes.push_back(node);
     }
 
-    for (auto node : nodes){
+    for (auto node : nodes)
+    {
         std::printf("Node %s\n", node->getName().c_str());
         node->run();
     }

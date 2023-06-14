@@ -14,7 +14,7 @@ class Circuit
 private:
     std::vector<NodePtr> nodes;
     std::map<std::string, int> nodeNameToIdLookup;
-    std::vector<int> sortedIds;
+    std::vector<NodePtr> sortedNodes;
     std::vector<int> probes; // not sure if this will work
 
 public:

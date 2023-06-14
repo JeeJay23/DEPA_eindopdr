@@ -1,3 +1,4 @@
+#pragma once
 #include "NorFunction.h"
 
 int NorFunction::execute(std::vector<int> inputs)

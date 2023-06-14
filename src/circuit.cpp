@@ -1,3 +1,5 @@
+#pragma once
+
 #include <fstream>
 #include <iostream>
 #include <list>
@@ -41,19 +43,19 @@ void Circuit::sortNodes()
             for (int j = 0; j < nodes.size(); j++) // Node to be checked against
             {
                 std::list<std::string> nextNodeNames;
-                for (std::string name : nodes[j]->nextNodes.name)
+                for (auto node : nodes[j]->getNextNodes())
                 {
-                    nextNodeNames.push_back(name);
+                    nextNodeNames.push_back(node->getName());
                 }
 
-                if (std::find(nextNodeNames.begin(), nextNodeNames.end(), nodes[i].name) != nextNodeNames.end())
+                if (std::find(nextNodeNames.begin(), nextNodeNames.end(), nodes[i]->getName()) != nextNodeNames.end())
                 {
                     std::cout << "Node found in nextNodes of another node | Skipping for now" << std::endl;
                     break;
                 }
                 else
                 {
-                    sortedIds.push_back(nodes[i].name);
+                    sortedNodes.push_back(nodes[i]);
                     nodes.erase(nodes.begin() + i);
                 }
             }

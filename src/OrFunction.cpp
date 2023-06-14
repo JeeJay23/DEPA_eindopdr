@@ -1,3 +1,4 @@
+#pragma once
 #include "OrFunction.h"
 
 int OrFunction::execute(std::vector<int> inputs)
