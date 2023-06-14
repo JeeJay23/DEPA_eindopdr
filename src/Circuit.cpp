@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
-#include "circuit.h"
+#include <list>
+#include "Circuit.h"
 #include "fileReader.h"
 
 Circuit::Circuit(/* args */)
@@ -11,8 +12,9 @@ Circuit::~Circuit()
 {
 }
 
-void Circuit::run()
+int Circuit::run()
 {
+    return 0;
 }
 
 Circuit Circuit::createCircuit(std::string path)
@@ -23,4 +25,38 @@ Circuit Circuit::createCircuit(std::string path)
     reader.read();
 
     return circuit;
+}
+
+void Circuit::sortNodes()
+{
+    // Check if first node in the list is part of nextNodes of all other nodes
+    // If not, add to sortedIds
+    // If yes, move to next node in the list
+    // Repeat until all nodes are sorted
+
+    while (nodes.size() > 0)
+    {
+        for (int i = 0; i < nodes.size(); i++) // Node to check
+        {
+            for (int j = 0; j < nodes.size(); j++) // Node to be checked against
+            {
+                std::list<std::string> nextNodeNames;
+                for (std::string name : nodes[j]->nextNodes.name)
+                {
+                    nextNodeNames.push_back(name);
+                }
+
+                if (std::find(nextNodeNames.begin(), nextNodeNames.end(), nodes[i].name) != nextNodeNames.end())
+                {
+                    std::cout << "Node found in nextNodes of another node | Skipping for now" << std::endl;
+                    break;
+                }
+                else
+                {
+                    sortedIds.push_back(nodes[i].name);
+                    nodes.erase(nodes.begin() + i);
+                }
+            }
+        }
+    }
 }

@@ -10,10 +10,10 @@ typedef std::shared_ptr<Node> NodePtr;
 class Circuit
 {
 private:
-    std::map<int, NodePtr> nodes;
+    std::vector<NodePtr> nodes;
     std::map<std::string, int> nodeNameToIdLookup;
     std::vector<int> sortedIds;
-    std::vector<int> probes; // not sure if this will work 
+    std::vector<int> probes; // not sure if this will work
 
 public:
     Circuit();
@@ -23,6 +23,7 @@ public:
     // TODO: decide if vector is the best return type
     int run();
 
+    static Circuit createCircuit(std::string);
     void addNode(NodePtr node);
     void sortNodes();
     int getNodeId(std::string nodeName);

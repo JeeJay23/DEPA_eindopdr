@@ -11,8 +11,6 @@ public:
     void close();
 
 private:
-    std::string nextLine();
-
     std::string path;
     std::ifstream file;
 };

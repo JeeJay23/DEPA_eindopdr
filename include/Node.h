@@ -8,11 +8,11 @@ protected:
     std::string name;
     std::vector<int> inputs;
     int output;
-    std::vector<Node*> nextNodes;
-    LogicFunction* function;
+    std::vector<Node *> nextNodes;
+    LogicFunction *function;
 
 public:
-    Node(std::string _name) : name(_name) {};
+    Node(std::string _name) : name(_name){};
     int run();
 
     void setValue(bool input)
