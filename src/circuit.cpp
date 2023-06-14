@@ -20,7 +20,7 @@ Circuit Circuit::createCircuit(std::string path)
     Circuit circuit;
     FileReader reader(path);
 
-    std::cout << (reader.readNext());
+    reader.read();
 
     return circuit;
 }

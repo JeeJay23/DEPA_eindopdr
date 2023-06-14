@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <regex>
 #include "fileReader.h"
 
 FileReader::FileReader(std::string path)
@@ -14,12 +15,17 @@ FileReader::~FileReader()
 
 std::string FileReader::read()
 {
+
+    std::regex pattern(R"((?!#).*?;)");
     std::string line;
 
     while (std::getline(file, line))
     {
-
-        ;
+        std::smatch match;
+        if (std::regex_search(line, match, pattern))
+        {
+            std::cout << match.str() << std::endl;
+        }
     }
 }
 
