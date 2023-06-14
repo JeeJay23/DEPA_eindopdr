@@ -1,26 +1,38 @@
 @startuml classDiagram
 
 title Circuit Simulation class diagram
-right footer "20-04-23 v1.0"
+right footer "20-05-11 v2.0"
 
 hide empty members
+
+class logicGate as "LogicGate" {
+}
 
 abstract class node as "Node" {
     - inputs : vector<bool>
     - outputs : vector<bool>
     - name : string
+    - nextNodeName : string
+
     + propagationDelay : int
     + run() : int 
     + setValue(value : bool)
 }
 
-class circuit as "Circuit" {
+class logicFunction as "LogicFunction" {
 
+}
+
+class circuit as "Circuit" {
     'store nodes by name as identifier'
-    - nodes : map<char*, node*>
+    - nodes : map<int, node*>
+    - nodeNameToId : map<string, int>;
+    - sortedIds : vector<int>
 
     + run() : result
     + addNode(node : node*)
+    + sortNodes()
+    + getNodeIdByName(name : string) : int
     + {static} createCircuit(fileName : string) : Circuit*
 }
 
@@ -28,18 +40,6 @@ class input as "Input" {
 }
 class probe as "Probe" {
     + printResult(result : int)
-}
-class andGate as "AndGate" {
-}
-class orGate as "OrGate" {
-}
-class notGate as "NotGate" {
-}
-class nandGate as "NandGate" {
-}
-class norGate as "norGate" {
-}
-class xorGate as "xorGate" {
 }
 
 class nodeFactory as "NodeFactory" {
@@ -52,16 +52,18 @@ class fileReader as "FileReader" {
 }
 
 node *-- circuit
-node "1" o-- "*" node : - nextNodes
-andGate --|> node
-orGate --|> node
-notGate --|> node
-nandGate --|> node
-norGate --|> node
-xorGate --|> node
+
 input --|> node
 probe --|> node
+logicGate --|> node
 
+logicGate *-- logicFunction
 
+andFunction --|> logicFunction
+orFunction --|> logicFunction
+notFunction --|> logicFunction
+nandFunction --|> logicFunction
+norFunction --|> logicFunction
+xorFunction --|> logicFunction
 
 @enduml

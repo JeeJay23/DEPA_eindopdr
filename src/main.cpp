@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <iostream>
-#include "fileReader.h"
+#include "Node.h"
 
 int main(int argc, char const *argv[])
 {
-    FileReader reader("circuit1.txt");
-    std::cout << reader.readNext();
+    Node *gate = new Node("AND");
+
+    std::printf("gate pointer: %#p\n", gate);
 
     return 0;
 }
