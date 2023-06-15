@@ -25,7 +25,12 @@ Circuit Circuit::createCircuit(std::string path)
     Circuit circuit;
     FileReader reader(path);
 
-    reader.read();
+    circuit.nodes = reader.read();
+
+    for (NodePtr node : circuit.nodes)
+    {
+        std::cout << node->getName() << std::endl;
+    }
 
     return circuit;
 }

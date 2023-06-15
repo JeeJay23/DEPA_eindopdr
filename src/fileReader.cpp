@@ -4,8 +4,11 @@
 #include <list>
 #include "fileReader.h"
 #include "nodeDescriptor.h"
+#include "NodeFactory.h"
+#include "Circuit.h"
 
 std::list<std::string> nodeTypes = {"INPUT_HIGH", "INPUT_LOW", "PROBE", "OR", "AND", "NOT", "NAND", "NOR", "XOR"};
+std::vector<NodePtr> nodes;
 
 FileReader::FileReader(std::string path)
 {
@@ -17,7 +20,7 @@ FileReader::~FileReader()
     file.close();
 }
 
-std::string FileReader::read()
+std::vector<NodePtr> FileReader::read()
 {
 
     std::regex pattern(R"((?!#).*?;)");
@@ -44,6 +47,9 @@ std::string FileReader::read()
                     // TODO: implement the addition of the node to the circuit
                     std::cout << "Name: " << name << std::endl;
                     std::cout << "Type: " << type << std::endl;
+
+                    NodePtr node = NodeFactory::create(type, name);
+                    nodes.push_back(node);
                 }
                 else
                 {
@@ -71,7 +77,7 @@ std::string FileReader::read()
         }
     }
 
-    return "";
+    return nodes;
 }
 void FileReader::close()
 {

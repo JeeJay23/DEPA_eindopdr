@@ -5,7 +5,7 @@ INCLDIR := include
 
 # Compiler options
 CC := C:\MinGW\bin\g++.exe
-CFLAGS := -std=c++11 -Wall -Wextra -I$(INCLDIR) -g
+CFLAGS := -std=c++11 -Wall -Wextra -I$(INCLDIR) 
 
 # Source files and object files
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
@@ -18,7 +18,7 @@ all: $(TARGET)
 
 $(TARGET): $(OBJS)
 	@if not exist $(subst /,\,$(BUILDDIR)) mkdir $(subst /,\,$(BUILDDIR))
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) -g -OO $^ -o $@
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
 	@if not exist $(subst /,\,$(BUILDDIR)) mkdir $(subst /,\,$(BUILDDIR))
