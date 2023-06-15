@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <algorithm>
 #include "Circuit.h"
 #include "fileReader.h"
 
