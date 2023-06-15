@@ -4,7 +4,7 @@ BUILDDIR := build
 INCLDIR := include
 
 # Compiler options
-CC := C:\MinGW\bin\g++.exe
+CC := C:\msys64\mingw64\bin\g++.exe
 CFLAGS := -std=c++11 -Wall -Wextra -I$(INCLDIR) -g
 
 # Source files and object files

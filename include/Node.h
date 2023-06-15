@@ -17,19 +17,18 @@ protected:
 
 public:
     Node(std::string _name, std::shared_ptr<LogicFunction> _function) : name(_name), function(_function){};
-
-    std::string getName() { return name; };
-
     int run();
 
-    void setValue(bool input)
-    {
-        inputs.push_back(input);
+    std::string getName() { return name; };
+    int getOutput() { return output; };
+
+
+    std::vector<std::shared_ptr<Node>> getNextNodes() {
+        return nextNodes;
     };
 
-    std::vector<std::shared_ptr<Node>> getNextNodes()
-    {
-        return nextNodes;
+    void setValue(bool input) {
+        inputs.push_back(input);
     };
 
 public:
