@@ -19,7 +19,7 @@ NodeFactory* NodeFactory::getInstance()
     return NodeFactory::instance.get();
 }
 
-void NodeFactory::assign(std::string id, std::shared_ptr<LogicFunction> function)
+void NodeFactory::assign(std::string id, LogicFunction* function)
 {
     NodeFactory* factory = NodeFactory::getInstance();
 

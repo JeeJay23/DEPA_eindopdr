@@ -1,6 +1,7 @@
 #pragma once 
 
 #include "LogicFunction.h"
+#include <string>
 
 class AndFunction : public LogicFunction
 {

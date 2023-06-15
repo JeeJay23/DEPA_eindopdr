@@ -16,5 +16,5 @@ int LogicFunction::execute(std::vector<int> inputs)
 
 LogicFunction::LogicFunction(std::string id)
 {
-    NodeFactory::assign(id, std::shared_ptr<LogicFunction>(this));
+    NodeFactory::assign(id, this);
 }
