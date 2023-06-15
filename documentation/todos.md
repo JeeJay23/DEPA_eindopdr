@@ -6,3 +6,5 @@
 * [ ] implement sorting of nodes
 * [ ] implement running circuit
 * [X] setup build system
+* [ ] fix public's and private's
+* [ ] remove prototype pattern?
