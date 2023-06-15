@@ -1,18 +1,15 @@
 @startuml classDiagram
 
 title Circuit Simulation class diagram
-right footer "20-05-11 v2.0"
+right footer "16-06-23 v3.0"
 
 hide empty members
 
-class logicGate as "LogicGate" {
-}
-
 abstract class node as "Node" {
     - inputs : vector<bool>
-    - outputs : vector<bool>
+    - output : bool
     - name : string
-    - nextNodeName : string
+    - nextNodes : vector<node*>
 
     + propagationDelay : int
     + run() : int 
@@ -20,44 +17,77 @@ abstract class node as "Node" {
 }
 
 class logicFunction as "LogicFunction" {
+    - LogicFunction()
+    - LogicFunction(id : string)
+    - id : string
 
+    + execute(inputs : vector<bool>) : bool
+    + getID() : string
+    + {virtual} clone() : logicFunction*
 }
 
 class circuit as "Circuit" {
-    'store nodes by name as identifier'
-    - nodes : map<int, node*>
-    - nodeNameToId : map<string, int>;
-    - sortedIds : vector<int>
+    - nodes : vector<node*>;
+    - sortedNodes : vector<node*>
 
     + run() : result
-    + addNode(node : node*)
     + sortNodes()
-    + getNodeIdByName(name : string) : int
     + {static} createCircuit(fileName : string) : Circuit*
 }
 
-class input as "Input" {
-}
-class probe as "Probe" {
-    + printResult(result : int)
-}
-
 class nodeFactory as "NodeFactory" {
-    + {static} instance : NodeFactory*
-    + {static} createNode(nodeType : string, name : string) : node*
+    - {static} instance : NodeFactory*
+    - NodeFactory()
+    + {static} assign(id : string, function : logicFunction*)
+    + {static} create(nodeType : string, name : string) : node*
+    + {static} getInstance() : NodeFactory*
 }
 
 class fileReader as "FileReader" {
     + {static} readFile(fileName : string) : Circuit*
 }
 
-node *-- circuit
+class andFunction{
+    {static} instance : andFunction*
+}
 
-input --|> node
-probe --|> node
-logicGate --|> node
+class orFunction{
+    {static} instance : orFunction*
+}
 
-logicGate *-- logicFunction
+class notFunction{
+    {static} instance : notFunction*
+}
+
+class nandFunction{
+    {static} instance : nandFunction*
+}
+
+class norFunction{
+    {static} instance : norFunction*
+}
+
+class xorFunction{
+    {static} instance : xorFunction*
+}
+
+class trueFunction{
+    {static} instance : trueFunction*
+}
+
+class falseFunction{
+    {static} instance : falseFunction*
+}
+
+class probeFunction{
+    {static} instance : probeFunction*
+}
+
+node *-- circuit : nodes
+logicFunction -- nodeFactory : functions
+node -- nodeFactory
+
+node --* logicFunction : function
 
 andFunction --|> logicFunction
 orFunction --|> logicFunction
@@ -65,5 +95,8 @@ notFunction --|> logicFunction
 nandFunction --|> logicFunction
 norFunction --|> logicFunction
 xorFunction --|> logicFunction
+trueFunction --|> logicFunction
+falseFunction --|> logicFunction
+probeFunction --|> logicFunction
 
 @enduml
