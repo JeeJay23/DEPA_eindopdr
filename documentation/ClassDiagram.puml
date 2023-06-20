@@ -16,6 +16,18 @@ abstract class node as "Node" {
     + setValue(value : bool)
 }
 
+class fileReader as "FileReader" {
+    - path : string
+    - file : ifstream 
+    - nodes : vector<NodePtr> 
+    - doesNodeExist(name : string) : bool 
+    - assignEdges(name : string& , edges : vector<string>&) : void
+
+    + FileReader(string)
+    + read() : vector<shared_ptr<Node>> 
+    + close() : void
+}
+
 class logicFunction as "LogicFunction" {
     - LogicFunction()
     - LogicFunction(id : string)
@@ -41,10 +53,6 @@ class nodeFactory as "NodeFactory" {
     + {static} assign(id : string, function : logicFunction*)
     + {static} create(nodeType : string, name : string) : node*
     + {static} getInstance() : NodeFactory*
-}
-
-class fileReader as "FileReader" {
-    + {static} readFile(fileName : string) : Circuit*
 }
 
 class andFunction{
@@ -86,6 +94,7 @@ class probeFunction{
 node *-- circuit : nodes
 logicFunction -- nodeFactory : functions
 node -- nodeFactory
+circuit --* fileReader : fileReader
 
 node --* logicFunction : function
 
